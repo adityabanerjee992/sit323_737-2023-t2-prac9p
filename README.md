@@ -37,6 +37,33 @@ To test the replication, you can insert data into `mongo-0` and then check if th
 
 You can use the following commands:
 
+To initialize the replica set, you need to use the `rs.initiate()` command from the mongo shell in one of your MongoDB instances (preferably, mongo-0). Here is an example of the command and its structure:
+
+```sell
+
+```
+
+Here's how you can perform these steps:
+
+1. Use the following command to get a shell into the mongo-0 pod:
+
+```shell
+kubectl exec -it mongo-0 -- /bin/bash
+```
+
+2. Start the mongo shell:
+
+```shell
+mongo
+```
+
+3. Use the `rs.initiate()` command as shown above.
+
+4. It might take a few seconds for the replica set to elect a primary. You can use the command `rs.status()` to check if the mongo-0 has become primary.
+
+
+After this, you should be able to use `rs.status()` to check the status of your replica set and confirm that the configuration has been applied.
+
 1. Insert data into `mongo-0`:
 
 ```bash
